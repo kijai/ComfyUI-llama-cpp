@@ -15,10 +15,12 @@ class llama_cpp_model_loader:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
-            "model": (folder_paths.get_filename_list("LLM"),),
             "n_gpu_layers": ("INT", {"default": 0, "min": -1, "max": 4096, "step": 1}),
             "download_default": ("BOOLEAN", {"default": False}),
             },
+            "optional": {
+            "model": (folder_paths.get_filename_list("LLM"),),
+            }
         }
 
     RETURN_TYPES = ("LLAMACPPMODEL",)
@@ -26,7 +28,7 @@ class llama_cpp_model_loader:
     FUNCTION = "loadmodel"
     CATEGORY = "Llama-cpp"
 
-    def loadmodel(self, model, n_gpu_layers, download_default):
+    def loadmodel(self, n_gpu_layers, download_default, model=None):
         mm.soft_empty_cache()
         model_path = os.path.join(folder_paths.models_dir, 'LLM', model)
 
@@ -49,6 +51,7 @@ class llama_cpp_model_loader:
                                   local_dir=llama3_dir, 
                                   local_dir_use_symlinks=False
                                   )
+                model_path = default_checkpoint_path
 
             llm = Llama(model_path, n_gpu_layers=n_gpu_layers)
    
