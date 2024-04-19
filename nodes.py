@@ -36,8 +36,6 @@ class llama_cpp_model_loader:
         }
         if not hasattr(self, "model") or custom_config != self.current_config:
             self.current_config = custom_config
-  
-            print(f"Loading model from {model_path}")
             llama3_dir = (os.path.join(folder_paths.models_dir, 'LLM', 'llama3'))
             default_checkpoint_path = os.path.join(llama3_dir, 'Meta-Llama-3-8B-Instruct-Q4_K_M.gguf')
             default_model = "Meta-Llama-3-8B-Instruct-Q4_K_M.gguf"
@@ -53,6 +51,7 @@ class llama_cpp_model_loader:
                 model_path = default_checkpoint_path
             else:
                 model_path = os.path.join(folder_paths.models_dir, 'LLM', model)
+            print(f"Loading model from {model_path}")
 
             llm = Llama(model_path, n_gpu_layers=n_gpu_layers)
    
