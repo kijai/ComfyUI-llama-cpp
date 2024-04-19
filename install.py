@@ -97,3 +97,10 @@ def install_llama(system_info):
         else:
             custom_command = f"{base_url}{lcpp_version}/llama_cpp_python-{lcpp_version}-{system_info['platform_tag']}.whl"
         install_package("llama-cpp-python", custom_command=custom_command)
+
+def main():
+    system_info = get_system_info()
+    install_llama(system_info)
+
+if __name__ == "__main__":
+    main()
