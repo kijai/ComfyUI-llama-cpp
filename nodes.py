@@ -30,8 +30,7 @@ class llama_cpp_model_loader:
 
     def loadmodel(self, n_gpu_layers, download_default, model=None):
         mm.soft_empty_cache()
-        model_path = os.path.join(folder_paths.models_dir, 'LLM', model)
-
+        
         custom_config = {
             "model": model,
         }
@@ -52,6 +51,8 @@ class llama_cpp_model_loader:
                                   local_dir_use_symlinks=False
                                   )
                 model_path = default_checkpoint_path
+            else:
+                model_path = os.path.join(folder_paths.models_dir, 'LLM', model)
 
             llm = Llama(model_path, n_gpu_layers=n_gpu_layers)
    
