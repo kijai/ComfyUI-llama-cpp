@@ -64,7 +64,7 @@ class llama_cpp_instruct:
             "llmamamodel": ("LLAMACPPMODEL",),
             "parameters": ("LLAMACPPARAMS", ),
             "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
-            "prompt": ("STRING", {"multiline": True, "default": "caption",}),
+            "prompt": ("STRING", {"multiline": True, "default": "How much wood would woodchuck chuck, if woodchuck could chuck wood?",}),
 
             },
         }
