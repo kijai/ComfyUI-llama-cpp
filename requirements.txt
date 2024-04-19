@@ -1,3 +1,4 @@
+scikit_build_core
 llama-cpp-python 
 --prefer-binary 
 --extra-index-url=https://jllllll.github.io/llama-cpp-python-cuBLAS-wheels/AVX2/cu121
